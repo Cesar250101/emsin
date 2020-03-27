@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_emsin_emsin,emsin.emsin,model_emsin_emsin,,1,0,0,0
+"access_emsin_emsin","Recurring manager","model_emsin_equipos","	sales_team.group_sale_salesman",1,1,1,1

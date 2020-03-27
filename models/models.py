@@ -12,7 +12,7 @@ class Equipo(models.Model):
     _rec_name = "name"
     _description = 'Equipos de clientes'
 
-    name = fields.Char(string="Nombre", required=False, )
+    name = fields.Char(string="Nombre", required=True, )
     marca = fields.Char(string="Marca",required=False)
     modelo = fields.Char(string="Modelo", required=False)
     patente = fields.Char(string="Patente", required=False)
