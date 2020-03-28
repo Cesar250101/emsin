@@ -24,7 +24,7 @@
                 <field name="imprime_resumen"/>
             </xpath>
               <notebook position="inside">
-                  <page string = "Datos de impresión">
+                  <page string = "Datos de impresión" attrs="{'invisible': [('imprime_resumen','=',False)]}">
                       <group>
                           <group>
                               <field name="texto_impresión"/>
