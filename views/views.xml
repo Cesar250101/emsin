@@ -13,5 +13,28 @@
 
         </field>
     </record>
+
+      <!-- Inherit Form View to Modify it -->
+      <record id="emsin.invoice_form" model="ir.ui.view">
+          <field name="name">emsin.invoice.form</field>
+          <field name="model">account.invoice</field>
+          <field name="inherit_id" ref="account.invoice_form"/>
+          <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="imprime_resumen"/>
+            </xpath>
+              <notebook position="inside">
+                  <page string = "Datos de impresión">
+                      <group>
+                          <group>
+                              <field name="texto_impresión"/>
+                          </group>
+                      </group>
+                  </page>
+              </notebook>
+
+          </field>
+      </record>
+
   </data>
 </odoo>

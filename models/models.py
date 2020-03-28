@@ -2,6 +2,13 @@
 
 from odoo import models, fields, api
 
+class Factura(models.Model):
+    _inherit = 'account.invoice'
+
+    imprime_resumen = fields.Boolean(string="Imprime Texto",  required=False)
+    texto_impresión = fields.Text(string="Texto para impresión",  required=False, )
+
+
 class Reparacion(models.Model):
     _inherit = 'mrp.repair'
 
