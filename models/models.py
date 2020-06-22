@@ -2,6 +2,19 @@
 
 from odoo import models, fields, api
 
+
+class NewModule(models.Model):
+    _inherit = 'stock.picking'
+
+    invoice_id = fields.Char(string="N° Factura", required=False,compute='_compute_invoice_id' )
+
+    @api.one
+    @api.depends('origin')
+    def _compute_invoice_id(self):
+        factura=self.env['account.invoice'].search([('origin','=',self.origin)],limit=1).sii_document_number
+        self.invoice_id=factura
+
+
 class Factura(models.Model):
     _inherit = 'account.invoice'
 
