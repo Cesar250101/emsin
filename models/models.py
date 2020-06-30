@@ -32,6 +32,8 @@ class Reparacion(models.Model):
     _inherit = 'mrp.repair'
 
     equipo_id = fields.Many2one(comodel_name="emsin.equipos", string="Equipo", required=True, )
+    partner_name_fantasia=fields.Char(string='Nombre de Fantasia',related="partner_id.x_nombre_fantasia",)
+
 
 class Equipo(models.Model):
     _name = 'emsin.equipos'
@@ -51,6 +53,7 @@ class SaleOrderLines(models.Model):
     _inherit = 'sale.order.line'
 
     sub_total_sr = fields.Integer(string="SubTotal", required=False,compute="_compute_amount_subtotal" )
+    partner_name_fantasia = fields.Char(string='Nombre de Fantasia', related="partner_id.x_nombre_fantasia", )
 
     @api.one
     @api.depends('product_uom_qty','price_unit','discount')
