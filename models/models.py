@@ -53,7 +53,7 @@ class SaleOrderLines(models.Model):
     _inherit = 'sale.order.line'
 
     sub_total_sr = fields.Integer(string="SubTotal", required=False,compute="_compute_amount_subtotal" )
-    partner_name_fantasia = fields.Char(string='Nombre de Fantasia', related="partner_id.x_nombre_fantasia", )
+
 
     @api.one
     @api.depends('product_uom_qty','price_unit','discount')
@@ -74,6 +74,7 @@ class SaleOrder(models.Model):
 
     amount_untaxed = fields.Integer(string="Base Imponible", required=False, compute="_compute_amount_base_imponible")
     amount_total = fields.Integer(string="Base Imponible", required=False, compute="_compute_amount_total")
+    partner_name_fantasia = fields.Char(string='Nombre de Fantasia', related="partner_id.x_nombre_fantasia", )
 
     @api.one
     @api.depends('order_line')
