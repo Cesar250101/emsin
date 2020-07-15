@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
-class NewModule(models.Model):
+class Picking(models.Model):
     _inherit = 'stock.picking'
 
     invoice_id = fields.Char(string="N° Factura", required=False,compute='_compute_invoice_id' )
@@ -13,6 +14,15 @@ class NewModule(models.Model):
     def _compute_invoice_id(self):
         factura=self.env['account.invoice'].search([('origin','=',self.origin)],limit=1).sii_document_number
         self.invoice_id=factura
+
+    @api.constrains('move_lines')
+    def _check_nro_lineas(self):
+        lineas=0
+        for record in self.move_lines:
+            lineas+=1
+        if lineas > 12:
+            raise ValidationError("Número de líneas del documento no puede ser mayor a 12!")
+
 
 
 class Factura(models.Model):
