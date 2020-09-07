@@ -3,6 +3,13 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
+class Compañia(models.Model):
+    _inherit = 'res.company'
+
+    logo_chile_proveedores = fields.Binary(string="Logo Chile Proveedores",  )
+    logo_sicep = fields.Binary(string="Logo Sicep", )
+
+
 
 class Picking(models.Model):
     _inherit = 'stock.picking'

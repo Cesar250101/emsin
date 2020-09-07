@@ -2,6 +2,22 @@
   <data>
 
       <!-- Inherit Form View to Modify it -->
+      <record id="emsin.view_company_form" model="ir.ui.view">
+          <field name="name">base.view.company.form</field>
+          <field name="model">res.company</field>
+          <field name="inherit_id" ref="base.view_company_form"/>
+          <field name="arch" type="xml">
+
+              <xpath expr="//field[@name='report_header']" position="after">
+                  <field name="logo_chile_proveedores"/>
+                  <field name="logo_sicep"/>
+                  <field name="overdue_msg"/>
+              </xpath>
+
+          </field>
+      </record>
+
+      <!-- Inherit Form View to Modify it -->
       <record id="emsin.view_picking_form" model="ir.ui.view">
           <field name="name">emsin.view.picking.form</field>
           <field name="model">stock.picking</field>
