@@ -187,7 +187,7 @@
                      <t t-set="price_included" t-value="o.is_price_included()" />
                      <h4 t-if="price_included">Valores Impuesto Incluído</h4>
                       <br></br>
-                      <div class="row box-blue" style="border: 2px solid black; min-height:420px;padding:10px;" name="reference">
+                      <div class="row box-blue" style="border: 2px solid black; min-height:360px;padding:10px;" name="reference">
                      <table class="table table-condensed">
                          <thead>
                              <tr style="max-height:8px; font-size:12px ; line-height:12px;  !important; padding:0px;">
@@ -251,7 +251,7 @@
                       <div class="col-xs-5" >
                         <t t-if="o.sii_barcode_img">
                           <div class="col-xs-12">
-                             <img t-att-src="'data:image/png;base64,%s' % to_text(o.sii_barcode_img)" />
+                             <img t-att-src="'data:image/png;base64,%s' % to_text(o.sii_barcode_img)" style="max-height: 150px;"/>
                           </div>
                           <div class="col-xs-12">
                               <p style="text-align:center;color:red; font-size:8px;">
