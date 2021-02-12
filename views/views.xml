@@ -48,7 +48,7 @@
     <record id="emsin.view_repair_order_form" model="ir.ui.view">
         <field name="name">emsin.view.repair.order.form</field>
         <field name="model">mrp.repair</field>
-        <field name="inherit_id" ref="mrp_repair.view_repair_order_form"/>
+        <field name="inherit_id" ref="repair.view_repair_order_form"/>
         <field name="arch" type="xml">
 
             <xpath expr="//field[@name='address_id']" position="after">
