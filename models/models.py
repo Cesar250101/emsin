@@ -46,7 +46,7 @@ class FacturaLineas(models.Model):
         self.price_subtotal=round(self.quantity*self.price_unit*((1-self.discount)/100))
 
 class Reparacion(models.Model):
-    _inherit = 'mrp.repair'
+    _inherit = 'repair'
 
     equipo_id = fields.Many2one(comodel_name="emsin.equipos", string="Equipo", required=True, )
     partner_name_fantasia=fields.Char(string='Nombre de Fantasia',related="partner_id.x_nombre_fantasia",)
