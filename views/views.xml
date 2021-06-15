@@ -2,7 +2,7 @@
   <data>
 
     <template id="report_orden_reparacion_custom" inherit_id="mrp_repair.report_mrprepairorder">
-        <xpath expr="//div[@class='mt32']" position="after">
+        <xpath expr="//div[@class='row mt32 mb32']" position="after">
             <div class="row mt32 mb32">
                 <div t-if="o.equipo_id.name" class="col-xs-2">
                     <strong>Equipo a Reparar:</strong>
