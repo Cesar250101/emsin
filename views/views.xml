@@ -1,6 +1,36 @@
 <odoo>
   <data>
 
+    <template id="report_orden_reparacion_custom" inherit_id="mrp_repair.report_mrprepairorder">
+        <xpath expr="//div[@class='mt32']" position="after">
+            <div class="row mt32 mb32">
+                <div t-if="o.equipo_id.name" class="col-xs-2">
+                    <strong>Equipo a Reparar:</strong>
+                    <p t-field="o.equipo_id.name"/>
+                </div>
+                <div class="col-xs-2" groups="stock.group_production_lot">
+                    <strong>Lot/Serial Number:</strong>
+                        <t t-if="o.equipo_id.nro_serie">
+                            <span t-field="o.equipo_id.nro_serie"/>
+                        </t>
+                </div>
+                <div t-if="o.equipo_id.moelo" class="col-xs-2">
+                    <strong>Modelo:</strong>
+                        <p t-field="o.equipo_id.modelo"/>
+                </div>
+                <div t-if="o.equipo_id.marca" class="col-xs-2">
+                    <strong>Marca:</strong>
+                        <p t-field="o.equipo_id.marca"/>
+                </div>
+                <div t-if="o.equipo_id.patente" class="col-xs-2">
+                    <strong>Patente:</strong>
+                        <p t-field="o.equipo_id.patente"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+
       <!-- Inherit Form View to Modify it -->
       <record id="emsin.view_company_form" model="ir.ui.view">
           <field name="name">base.view.company.form</field>
