@@ -89,37 +89,37 @@ class SaleOrderLines(models.Model):
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    amount_untaxed = fields.Integer(string="Base Imponible", required=False, compute="_compute_amount_base_imponible")
-    amount_total = fields.Integer(string="Base Imponible", required=False, compute="_compute_amount_total")
+    #amount_untaxed = fields.Integer(string="Base Imponible", required=False, compute="_compute_amount_base_imponible")
+    #amount_total = fields.Integer(string="Base Imponible", required=False, compute="_compute_amount_total")
     partner_name_fantasia = fields.Char(string='Nombre de Fantasia', related="partner_id.x_nombre_fantasia", )
 
-    @api.one
-    @api.depends('order_line')
-    def _compute_amount_base_imponible(self):
-        suma=0
-        for i in self.order_line:
-            suma=suma+i.sub_total_sr
-        self.amount_untaxed=suma
+    # @api.one
+    # @api.depends('order_line')
+    # def _compute_amount_base_imponible(self):
+    #     suma=0
+    #     for i in self.order_line:
+    #         suma=suma+i.sub_total_sr
+    #     self.amount_untaxed=suma
 
-    @api.onchange('order_line')
-    def _onchange_order_line(self):
-        for order in self:
-            amount_untaxed = amount_tax = 0.0
-            for line in order.order_line:
-                amount_untaxed += line.sub_total_sr
-                amount_tax += line.price_tax
-            order.update({
-                'amount_untaxed': amount_untaxed,
-                'amount_tax': amount_tax,
-                'amount_total': amount_untaxed + amount_tax,
-            })
-            self.amount_untaxed=amount_untaxed
+    # @api.onchange('order_line')
+    # def _onchange_order_line(self):
+    #     for order in self:
+    #         amount_untaxed = amount_tax = 0.0
+    #         for line in order.order_line:
+    #             amount_untaxed += line.sub_total_sr
+    #             amount_tax += line.price_tax
+    #         order.update({
+    #             'amount_untaxed': amount_untaxed,
+    #             'amount_tax': amount_tax,
+    #             'amount_total': amount_untaxed + amount_tax,
+    #         })
+    #         self.amount_untaxed=amount_untaxed
 
 
-    @api.one
-    @api.depends('amount_untaxed','amount_tax')
-    def _compute_amount_total(self):
-        self.amount_total=self.amount_untaxed+self.amount_tax
+    # @api.one
+    # @api.depends('amount_untaxed','amount_tax')
+    # def _compute_amount_total(self):
+    #     self.amount_total=self.amount_untaxed+self.amount_tax
 
 class NewModule(models.Model):
     _inherit = 'hr.contract'
