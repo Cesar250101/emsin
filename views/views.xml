@@ -14,7 +14,7 @@
                             <span t-field="o.equipo_id.nro_serie"/>
                         </t>
                 </div>
-                <div t-if="o.equipo_id.moelo" class="col-xs-2">
+                <div t-if="o.equipo_id.modelo" class="col-xs-2">
                     <strong>Modelo:</strong>
                         <p t-field="o.equipo_id.modelo"/>
                 </div>
